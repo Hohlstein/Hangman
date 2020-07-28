@@ -1,10 +1,12 @@
 word2guess = "Informatik"
 haveWon = False
 word2guessEncoded = ""
+#TODO neuer besserer name für word2guessEncoded und def namen geben zur besseren übersicht
 
 #The following function takes the word which is to guess and an empty string
 #and for every letter in the word the empty string get's an _  to represent 
 #the word for which the users try to guess the right letters
+print(len(word2guess))
 for x in range(len(word2guess)):
     word2guessEncoded = word2guessEncoded + "_ "
 print(word2guessEncoded)
@@ -13,13 +15,17 @@ print(word2guessEncoded)
 #After that, the letter is checked to be in the string of the solution and if
 #so it will get to the same position in the encoded word.  
 while not haveWon:
-    chosenLetter = input("Please chose a letter.")
+    chosenLetter = input("Please chose a letter:")
     inWord = chosenLetter in word2guess
     if inWord:
-        indexLetter = word2guess.index(chosenLetter)
-        word2guessEncoded[indexLetter] = chosenLetter
+        indexLetter = word2guess.index(chosenLetter) + 1
+        listTemp = list(word2guessEncoded)
+        listTemp[indexLetter] = chosenLetter
+        word2guessEncoded = "".join(listTemp)
+        print(word2guessEncoded)
+    break
         
 print(indexLetter)
-print(word2guessEncoded)
-        
+    
+    
     
