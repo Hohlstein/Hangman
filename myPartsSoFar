@@ -1,108 +1,69 @@
+import random
 
 #The following function takes the word which is to guess and an empty string
 #and for every letter in the word the empty string get's an _  to represent 
 #the word for which the users try to guess the right letters
+
 class Hangman:
-    
-    
     def __init__(self):
-        self.anzahlerraten=0
-        self.gewonnen=False
-    
+        self.anzahlerraten = 0
+        self.gewonnen = False
+        
+#at the moment we define a list with possible words and one will get choosen random.
+        
+    def generateWord():
+        possibleWords = ["Informatik", "Naturwissenschaft", "Sternenflotte", "Ingenieurwesen"]
+        choosenWord = possibleWords[random.randint(0, len(possibleWords) - 1)]
+        return choosenWord
 #The following function takes the word which is to guess and an empty string
-#and for every letter in the word the empty string get's an _  to represent 
-#the word for which the users try to guess the right letters    
+#and for every letter in the word the empty string get's an _ to represent 
+#the word for which the users try to guess the right letters   
     
     def umwandeln(self, word2guess):
-        wortverschluesselt=""
+        wortverschluesselt = ""
         for x in range(len(word2guess)):
             wortverschluesselt = wortverschluesselt + "_"
         return wortverschluesselt
 
 #We use a while loop to let the programm run until the word is completed.
 #After that, the letter is checked to be in the string of the solution and if
-#so it will get to the same position in the encoded word.  
+#so it will get to the same position in the encoded word.
+        
     def erraten(self, word2guess, wortverschluesselt):
         while not self.gewonnen:
             chosenLetter = input("Please chose a letter:")
             index=0
+            
 #Index wird von 0 bis length - 1 hochgezählt und dann an dieser Stelle mit dem ausgewählten Buchstaben verglichen
 #Wenn der Buchstabe mindestens 1 mal vorkommt wird das '_' gegen den Buchstaben ausgetauscht
 #Je nachdem wie oft dies passiert wird der Gewinnfortschritt(gewinnenyeah) hochgezählt (höchstens gleich Anzahl der Buchstaben)
+            
             inWord=chosenLetter in word2guess
             if inWord:
                 while index < len(word2guess):
-                    if (word2guess[index]==chosenLetter):
-                        self.anzahlerraten=self.anzahlerraten+1
+                    if (word2guess[index] == chosenLetter):
+                        self.anzahlerraten = self.anzahlerraten+1
                         listTemp = list(wortverschluesselt)
                         listTemp[index] = chosenLetter
                         wortverschluesselt = ''.join(listTemp)
                     index = index + 1 
                 print(wortverschluesselt)
                 index=0
+                
 #Wenn alle Buchstaben erraten wurden, ist das Spiel vorbei
+                
             if (self.anzahlerraten==len(word2guess)):
                 self.gewonnen=True
       
-        
-    
-#Wort, das zu erraten ist    
-word2guess="informatik"    
-
 #Hangman Objekt erzeugen
-testhangman=Hangman()
+testhangman = Hangman()
+
+#get a word from a list
+word2guess = testhangman.generateWord()   
 
 #wort als Unterstriche ausgeben
-word2guessEncoded=testhangman.umwandeln(word2guess)
+word2guessEncoded = testhangman.umwandeln(word2guess)
 print(word2guessEncoded)
 
 #User Erratet jetzt das Wort
 testhangman.erraten(word2guess, word2guessEncoded)
-
-
-
-
-
-
-"""
-word2guess = "informatik"
-
-haveWon = False
-index=0
-gewinnenyeah=0
-word2guessEncoded = ""
-#TODO neuer besserer name für word2guessEncoded und def namen geben zur besseren übersicht
-
-#The following function takes the word which is to guess and an empty string
-#and for every letter in the word the empty string get's an _  to represent 
-#the word for which the users try to guess the right letters
-for x in range(len(word2guess)):
-    word2guessEncoded = word2guessEncoded + "_"
-
-print(word2guessEncoded)
-
-#We use a while loop to let the programm run until the word is completed.
-#After that, the letter is checked to be in the string of the solution and if
-#so it will get to the same position in the encoded word.  
-while not haveWon:
-    chosenLetter = input("Please chose a letter:")
-    inWord = chosenLetter in word2guess
-    if inWord:
-#Index wird von 0 bis length - 1 hochgezählt und dann an dieser Stelle mit dem ausgewählten Buchstaben verglichen
-#Wenn der Buchstabe mindestens 1 mal vorkommt wird das '_' gegen den Buchstaben ausgetauscht
-#Je nachdem wie oft dies passiert wird der Gewinnfortschritt(gewinnenyeah) hochgezählt (höchstens gleich Anzahl der Buchstaben)
-        while index < len(word2guess):
-            if ( word2guess[index]==chosenLetter):
-                gewinnenyeah=gewinnenyeah+1
-                listTemp = list(word2guessEncoded)
-                listTemp[index] = chosenLetter
-                word2guessEncoded = ''.join(listTemp)
-                print(listTemp)
-                print (index)
-            index = index + 1 
-        print(word2guessEncoded)
-        index=0
-#Wenn alle Buchstaben erraten wurden, ist das Spiel vorbei
-    if (gewinnenyeah==len(word2guess)):
-        haveWon=True
-"""
