@@ -20,7 +20,7 @@ print(word2guessEncoded)
 while not haveWon:
     chosenLetter = input("Please chose a letter:")
     inWord = chosenLetter in word2guess
-    if inWord
+    if inWord:
 #Index wird von 0 bis length - 1 hochgezählt und dann an dieser Stelle mit dem ausgewählten Buchstaben verglichen
 #Wenn der Buchstabe mindestens 1 mal vorkommt wird das '_' gegen den Buchstaben ausgetauscht
 #Je nachdem wie oft dies passiert wird der Gewinnfortschritt(gewinnenyeah) hochgezählt (höchstens gleich Anzahl der Buchstaben)
