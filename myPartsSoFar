@@ -20,7 +20,10 @@ print(word2guessEncoded)
 while not haveWon:
     chosenLetter = input("Please chose a letter:")
     inWord = chosenLetter in word2guess
-    if inWord:
+    if inWord
+#Index wird von 0 bis length - 1 hochgezählt und dann an dieser Stelle mit dem ausgewählten Buchstaben verglichen
+#Wenn der Buchstabe mindestens 1 mal vorkommt wird das '_' gegen den Buchstaben ausgetauscht
+#Je nachdem wie oft dies passiert wird der Gewinnfortschritt(gewinnenyeah) hochgezählt (höchstens gleich Anzahl der Buchstaben)
         while index < len(word2guess):
             if ( word2guess[index]==chosenLetter):
                 gewinnenyeah=gewinnenyeah+1
@@ -32,5 +35,6 @@ while not haveWon:
             index = index + 1 
         print(word2guessEncoded)
         index=0
+#Wenn alle Buchstaben erraten wurden, ist das Spiel vorbei
     if (gewinnenyeah==len(word2guess)):
         haveWon=True
