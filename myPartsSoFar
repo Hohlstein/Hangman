@@ -42,11 +42,14 @@ class Hangman:
             if inWord:
                 while index < len(word2guess):
                     if (word2guess[index] == chosenLetter):
-                        self.anzahlerraten = self.anzahlerraten+1
+                        self.anzahlerraten = self.anzahlerraten + 1
                         listTemp = list(wortverschluesselt)
                         listTemp[index] = chosenLetter
                         wortverschluesselt = ''.join(listTemp)
-                    index = index + 1 
+                    else :
+                        print("The letter you did choose is wrong. Please try again.")
+                        #testhangman.drawHangman()
+                    index = index + 1
                 print(wortverschluesselt)
                 index=0
                 
